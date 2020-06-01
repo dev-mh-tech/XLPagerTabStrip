@@ -173,6 +173,12 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         buttonBarView.layoutIfNeeded()
     }
 
+    open override func viewDidAppear(_ animated: Bool) {
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        super.viewDidAppear(animated)
+    }
+
     open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
