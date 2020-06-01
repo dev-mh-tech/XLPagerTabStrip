@@ -26,6 +26,8 @@ import Foundation
 
 open class ButtonBarViewCell: UICollectionViewCell {
 
+    @IBOutlet open var labelCenterY: NSLayoutConstraint!
+    @IBOutlet open var backgroundImageView: UIImageView!
     @IBOutlet open var imageView: UIImageView!
     @IBOutlet open var label: UILabel!
 
