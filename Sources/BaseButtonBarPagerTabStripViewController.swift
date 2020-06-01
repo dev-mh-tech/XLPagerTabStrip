@@ -87,6 +87,7 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
         buttonBarView.showsHorizontalScrollIndicator = false
         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
+        buttonBarView.selectedBar.image = settings.style.selectedBarBackgroundImage
         buttonBarView.selectedBarVerticalAlignment = settings.style.selectedBarVerticalAlignment
         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight
         // register button bar item cell
@@ -107,7 +108,9 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
 
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        isViewAppearing = false
+        isViewAppearing = true
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
 
     open override func viewDidLayoutSubviews() {
@@ -132,6 +135,7 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
         // tab/cell may end up either skewed or off screen after a rotation otherwise)
         buttonBarView.moveTo(index: currentIndex, animated: false, swipeDirection: .none, pagerScroll: .scrollOnlyIfOutOfScreen)
         buttonBarView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: [])
+        isViewAppearing = false
     }
 
     // MARK: - View Rotation

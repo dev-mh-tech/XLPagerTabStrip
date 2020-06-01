@@ -49,6 +49,8 @@ public struct ButtonBarPagerTabStripSettings {
         public var buttonBarRightContentInset: CGFloat?
 
         public var selectedBarBackgroundColor = UIColor.black
+        public var selectedBarBackgroundImage: UIImage?
+
         public var selectedBarHeight: CGFloat = 5
         public var selectedBarVerticalAlignment: SelectedBarVerticalAlignment = .bottom
 
@@ -145,7 +147,9 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
 
         buttonBarView.showsHorizontalScrollIndicator = false
         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
+        
         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
+        buttonBarView.selectedBar.image = settings.style.selectedBarBackgroundImage
 
         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight
         buttonBarView.selectedBarVerticalAlignment = settings.style.selectedBarVerticalAlignment
@@ -163,6 +167,12 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         buttonBarView.layoutIfNeeded()
+    }
+
+    open override func viewDidAppear(_ animated: Bool) {
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+        super.viewDidAppear(animated)
     }
 
     open override func viewDidLayoutSubviews() {
