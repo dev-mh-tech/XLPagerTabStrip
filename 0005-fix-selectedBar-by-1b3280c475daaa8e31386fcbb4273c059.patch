@@ -1,0 +1,29 @@
+From 9b156896196756c27a062efa0f45278dfaef6543 Mon Sep 17 00:00:00 2001
+From: mark <mark.appledeveloper@gmail.com>
+Date: Mon, 1 Jun 2020 16:25:47 +0800
+Subject: [PATCH 5/5] =?UTF-8?q?fix=20=E5=B8=82=E5=A0=B4=E5=88=97=E8=A1=A8?=
+ =?UTF-8?q?=20selectedBar=E7=9A=84=E9=A1=8F=E8=89=B2=20[by=201b3280c475daa?=
+ =?UTF-8?q?a8e31386fcbb4273c059d43c4b0]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Sources/BaseButtonBarPagerTabStripViewController.swift | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Sources/BaseButtonBarPagerTabStripViewController.swift b/Sources/BaseButtonBarPagerTabStripViewController.swift
+index 8a852be..313acb8 100644
+--- a/Sources/BaseButtonBarPagerTabStripViewController.swift
++++ b/Sources/BaseButtonBarPagerTabStripViewController.swift
+@@ -87,6 +87,7 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
+         buttonBarView.showsHorizontalScrollIndicator = false
+         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
+         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
++        buttonBarView.selectedBar.image = settings.style.selectedBarBackgroundImage
+         buttonBarView.selectedBarVerticalAlignment = settings.style.selectedBarVerticalAlignment
+         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight
+         // register button bar item cell
+-- 
+2.21.1 (Apple Git-122.3)
+

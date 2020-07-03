@@ -1,0 +1,43 @@
+From f0f4228eea6d0ad470ef43249469a4cc65d385a8 Mon Sep 17 00:00:00 2001
+From: mark <mark.appledeveloper@gmail.com>
+Date: Mon, 1 Jun 2020 15:03:13 +0800
+Subject: [PATCH 2/5] =?UTF-8?q?fix=20=E7=99=BB=E5=85=A5=E6=88=90=E5=8A=9F?=
+ =?UTF-8?q?=E5=BE=8C=EF=BC=8C=E9=BB=9E=E6=93=8A=E5=81=B4=E9=82=8A=E6=AC=84?=
+ =?UTF-8?q?=E9=80=B2=E5=85=A5=E5=B8=82=E5=A0=B4=E5=88=97=E8=A1=A8=E6=9C=83?=
+ =?UTF-8?q?=E9=80=A0=E6=88=90Tab=E6=AC=84=EF=BC=B5=EF=BC=A9=E9=8C=AF?=
+ =?UTF-8?q?=E8=AA=A4=20[by=20b8d2b98837e6f844ac59f27005215201754caa2d,=20c?=
+ =?UTF-8?q?a5ec2c0b4b2b876c1c071768dd9c92aa286f730]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Sources/BaseButtonBarPagerTabStripViewController.swift | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Sources/BaseButtonBarPagerTabStripViewController.swift b/Sources/BaseButtonBarPagerTabStripViewController.swift
+index 68684ac..8a852be 100644
+--- a/Sources/BaseButtonBarPagerTabStripViewController.swift
++++ b/Sources/BaseButtonBarPagerTabStripViewController.swift
+@@ -107,7 +107,9 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
+ 
+     open override func viewDidAppear(_ animated: Bool) {
+         super.viewDidAppear(animated)
+-        isViewAppearing = false
++        isViewAppearing = true
++        view.setNeedsLayout()
++        view.layoutIfNeeded()
+     }
+ 
+     open override func viewDidLayoutSubviews() {
+@@ -132,6 +134,7 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
+         // tab/cell may end up either skewed or off screen after a rotation otherwise)
+         buttonBarView.moveTo(index: currentIndex, animated: false, swipeDirection: .none, pagerScroll: .scrollOnlyIfOutOfScreen)
+         buttonBarView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: [])
++        isViewAppearing = false
+     }
+ 
+     // MARK: - View Rotation
+-- 
+2.21.1 (Apple Git-122.3)
+

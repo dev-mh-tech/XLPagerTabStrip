@@ -1,0 +1,99 @@
+From ece93159298112ad4b3395ab38bd95a8995ad9cc Mon Sep 17 00:00:00 2001
+From: mark <mark.appledeveloper@gmail.com>
+Date: Mon, 1 Jun 2020 15:58:48 +0800
+Subject: [PATCH 3/5] =?UTF-8?q?TG=E6=96=B0=E5=B9=B4=E7=89=88UI=20[by=207e5?=
+ =?UTF-8?q?4606a45d708939ccdac05e105545f00e1671f]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Sources/ButtonBarViewCell.swift |  2 ++
+ Sources/ButtonCell.xib          | 31 +++++++++++++++++++------------
+ 2 files changed, 21 insertions(+), 12 deletions(-)
+
+diff --git a/Sources/ButtonBarViewCell.swift b/Sources/ButtonBarViewCell.swift
+index a16e02f..e55d40d 100644
+--- a/Sources/ButtonBarViewCell.swift
++++ b/Sources/ButtonBarViewCell.swift
+@@ -27,6 +27,8 @@ import Foundation
+ 
+ open class ButtonBarViewCell: UICollectionViewCell {
+ 
++    @IBOutlet open var labelCenterY: NSLayoutConstraint!
++    @IBOutlet open var backgroundImageView: UIImageView!
+     @IBOutlet open var imageView: UIImageView!
+     @IBOutlet open var label: UILabel!
+ 
+diff --git a/Sources/ButtonCell.xib b/Sources/ButtonCell.xib
+index 7025bc7..2531c31 100644
+--- a/Sources/ButtonCell.xib
++++ b/Sources/ButtonCell.xib
+@@ -1,11 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+-    <device id="retina4_7" orientation="portrait">
+-        <adaptation id="fullscreen"/>
+-    </device>
++<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
++    <device id="retina4_7" orientation="portrait" appearance="light"/>
+     <dependencies>
+         <deployment identifier="iOS"/>
+-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
++        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+     </dependencies>
+     <objects>
+@@ -18,12 +16,9 @@
+                 <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                 <autoresizingMask key="autoresizingMask"/>
+                 <subviews>
+-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7f-rk-sQl">
+-                        <rect key="frame" x="22" y="12" width="37.5" height="17"/>
+-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+-                        <nil key="highlightedColor"/>
+-                    </label>
++                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9NJ-ig-PxR">
++                        <rect key="frame" x="12.5" y="7" width="55" height="33"/>
++                    </imageView>
+                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tFG-yJ-6Th">
+                         <rect key="frame" x="22.5" y="2.5" width="35" height="35"/>
+                         <constraints>
+@@ -31,20 +26,32 @@
+                             <constraint firstAttribute="height" constant="35" id="ojk-Ug-Lgh"/>
+                         </constraints>
+                     </imageView>
++                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7f-rk-sQl">
++                        <rect key="frame" x="21.5" y="11.5" width="37.5" height="17"/>
++                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
++                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
++                        <nil key="highlightedColor"/>
++                    </label>
+                 </subviews>
+             </view>
+             <color key="backgroundColor" red="0.027450980390000001" green="0.72549019609999998" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+             <constraints>
++                <constraint firstItem="9NJ-ig-PxR" firstAttribute="width" secondItem="zg4-fX-zUF" secondAttribute="width" multiplier="95/138" id="5ak-Fo-NHk"/>
+                 <constraint firstItem="tFG-yJ-6Th" firstAttribute="centerY" secondItem="zg4-fX-zUF" secondAttribute="centerY" id="5so-ZP-gRs"/>
+                 <constraint firstItem="tFG-yJ-6Th" firstAttribute="centerX" secondItem="zg4-fX-zUF" secondAttribute="centerX" id="9em-NR-hoa"/>
++                <constraint firstItem="9NJ-ig-PxR" firstAttribute="centerX" secondItem="zg4-fX-zUF" secondAttribute="centerX" id="BHG-o2-fUg"/>
+                 <constraint firstItem="s7f-rk-sQl" firstAttribute="centerY" secondItem="zg4-fX-zUF" secondAttribute="centerY" id="ZeP-6I-AXE"/>
+                 <constraint firstItem="s7f-rk-sQl" firstAttribute="centerX" secondItem="zg4-fX-zUF" secondAttribute="centerX" id="c15-bZ-hPG"/>
++                <constraint firstItem="9NJ-ig-PxR" firstAttribute="top" secondItem="zg4-fX-zUF" secondAttribute="top" constant="7" id="fY9-0H-veY"/>
++                <constraint firstAttribute="bottom" secondItem="9NJ-ig-PxR" secondAttribute="bottom" id="gVC-TI-g9S"/>
+             </constraints>
+             <connections>
++                <outlet property="backgroundImageView" destination="9NJ-ig-PxR" id="LA9-jE-1qf"/>
+                 <outlet property="imageView" destination="tFG-yJ-6Th" id="Odb-dR-tf4"/>
+                 <outlet property="label" destination="s7f-rk-sQl" id="4gU-tb-BMB"/>
++                <outlet property="labelCenterY" destination="ZeP-6I-AXE" id="cTC-ra-YA9"/>
+             </connections>
+-            <point key="canvasLocation" x="307" y="541"/>
++            <point key="canvasLocation" x="305.60000000000002" y="540.62968515742136"/>
+         </collectionViewCell>
+     </objects>
+ </document>
+-- 
+2.21.1 (Apple Git-122.3)
+

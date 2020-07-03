@@ -1,0 +1,59 @@
+From eb9791fdc71aa9d6e57b65d1cffd23cd6536d711 Mon Sep 17 00:00:00 2001
+From: mark <mark.appledeveloper@gmail.com>
+Date: Mon, 1 Jun 2020 16:20:58 +0800
+Subject: [PATCH 4/5] =?UTF-8?q?TG=E6=96=B0=E5=B9=B4=E7=89=88=20selctedBar?=
+ =?UTF-8?q?=E5=8F=AF=E7=94=A8=E6=BC=B8=E5=B1=A4=E5=9C=96=E7=89=87=20[by=20?=
+ =?UTF-8?q?5f1a82a905996d0456a1b77bf49add2144b90ec1,=2001d58341dffeedc2f38?=
+ =?UTF-8?q?0ee5f90695a3e19bdb47c]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Sources/ButtonBarPagerTabStripViewController.swift | 4 ++++
+ Sources/ButtonBarView.swift                        | 6 +++---
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/Sources/ButtonBarPagerTabStripViewController.swift b/Sources/ButtonBarPagerTabStripViewController.swift
+index 5fa6fd4..6fbfc7f 100644
+--- a/Sources/ButtonBarPagerTabStripViewController.swift
++++ b/Sources/ButtonBarPagerTabStripViewController.swift
+@@ -49,6 +49,8 @@ public struct ButtonBarPagerTabStripSettings {
+         public var buttonBarRightContentInset: CGFloat?
+ 
+         public var selectedBarBackgroundColor = UIColor.black
++        public var selectedBarBackgroundImage: UIImage?
++
+         public var selectedBarHeight: CGFloat = 5
+         public var selectedBarVerticalAlignment: SelectedBarVerticalAlignment = .bottom
+ 
+@@ -145,7 +147,9 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
+ 
+         buttonBarView.showsHorizontalScrollIndicator = false
+         buttonBarView.backgroundColor = settings.style.buttonBarBackgroundColor ?? buttonBarView.backgroundColor
++        
+         buttonBarView.selectedBar.backgroundColor = settings.style.selectedBarBackgroundColor
++        buttonBarView.selectedBar.image = settings.style.selectedBarBackgroundImage
+ 
+         buttonBarView.selectedBarHeight = settings.style.selectedBarHeight
+         buttonBarView.selectedBarVerticalAlignment = settings.style.selectedBarVerticalAlignment
+diff --git a/Sources/ButtonBarView.swift b/Sources/ButtonBarView.swift
+index a204971..3258ca2 100644
+--- a/Sources/ButtonBarView.swift
++++ b/Sources/ButtonBarView.swift
+@@ -45,9 +45,9 @@ public enum SelectedBarVerticalAlignment {
+ 
+ open class ButtonBarView: UICollectionView {
+ 
+-    open lazy var selectedBar: UIView = { [unowned self] in
+-        let bar  = UIView(frame: CGRect(x: 0, y: self.frame.size.height - CGFloat(self.selectedBarHeight), width: 0, height: CGFloat(self.selectedBarHeight)))
+-        bar.layer.zPosition = 9999
++    open lazy var selectedBar: UIImageView = { [unowned self] in
++        let bar  = UIImageView(frame: CGRect(x: 0, y: self.frame.size.height - CGFloat(self.selectedBarHeight), width: 0, height: CGFloat(self.selectedBarHeight)))
++        bar.contentMode = .scaleToFill
+         return bar
+     }()
+ 
+-- 
+2.21.1 (Apple Git-122.3)
+
